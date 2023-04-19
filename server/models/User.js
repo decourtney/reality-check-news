@@ -29,6 +29,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
+  isContentCreator: {
+    type: Boolean,
+    default: false
+  },
   preferences: {
     type: [String],
     default: [],
