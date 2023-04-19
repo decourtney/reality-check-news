@@ -20,6 +20,11 @@ const postSchema = new Schema({
     type: [String],
     default: [],
   },
+  comments: {
+    type: [String],
+    default: [],
+    ref: "Comment",
+  },
   publicationDate: {
     type: Date,
     default: Date.now,

@@ -20,6 +20,11 @@ const articleSchema = new Schema({
     type: String,
     required: true,
   },
+  comments: {
+    type: [String],
+    default: [],
+    ref: "Comment",
+  },
   tags: {
     type: [String],
     default: [],
