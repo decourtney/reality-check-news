@@ -1,3 +1,5 @@
+// Reactions belong to Users and Posts
+
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;

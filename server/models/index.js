@@ -1,12 +1,14 @@
 const User = require('./User');
 const Profile = require('./Profile');
-const Follower = require('./Follower');
 const Post = require('./Post');
 const Article = require('./Article');
 const Media = require('./Media');
 const Category = require('./Category');
-const Tag = require('./Tag');
-const Comment = require('./Order');
+const Comment = require('./Comment');
 const Reaction = require('./Reaction');
 
-module.exports = { User, Profile, Follower, Post, Article, Media, Category, Tag, Comment, Reaction };
+// Stretch Goals
+const Follower = require("./Follower");
+const Tag = require("./Tag");
+
+module.exports = { User, Profile, Post, Article, Media, Category, Comment, Reaction };

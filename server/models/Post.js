@@ -1,35 +1,35 @@
+// Post is the shell for Comments and Articles. Post belongs to a User
+
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const postSchema = new Schema({
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    media: {
+      type: Schema.Types.ObjectId,
+      ref: "Media",
+    },
+    reactions: {
+      type: Map,
+      of: String,
+      default: {},
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
-  content: {
-    type: String,
-    required: true,
-  },
-  images: {
-    type: [String],
-    default: [],
-  },
-  videos: {
-    type: [String],
-    default: [],
-  },
-  comments: {
-    type: [String],
-    default: [],
-    ref: "Comment",
-  },
-  publicationDate: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  { timestamps: true }
+);
 
 const Post = mongoose.model("Post", postSchema);
 

@@ -1,3 +1,5 @@
+// User has a Profile schema and Boolean for isContentCreator
+
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;

@@ -1,20 +1,22 @@
-const mongoose = require("mongoose");
+// Follower is a stretch goal
 
-const { Schema } = mongoose;
+// const mongoose = require("mongoose");
 
-const followerSchema = new Schema({
-  follower: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  following: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-});
+// const { Schema } = mongoose;
 
-const Follower = mongoose.model("Follower", followerSchema);
+// const followerSchema = new Schema({
+//   follower: {
+//     type: Schema.Types.ObjectId,
+//     ref: "User",
+//     required: true,
+//   },
+//   following: {
+//     type: Schema.Types.ObjectId,
+//     ref: "User",
+//     required: true,
+//   },
+// });
 
-module.exports = Follower;
+// const Follower = mongoose.model("Follower", followerSchema);
+
+// module.exports = Follower;
