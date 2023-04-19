@@ -29,9 +29,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  preferences: {
-    type: [String],
-    default: [],
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+    required: true,
+  },
+  isContentCreator: {
+    type: Boolean,
+    default: false,
   },
 });
 
