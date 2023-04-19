@@ -1,3 +1,5 @@
+// User has a Profile schema and Boolean for isContentCreator
+
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -29,9 +31,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  preferences: {
-    type: [String],
-    default: [],
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+    required: true,
+  },
+  isContentCreator: {
+    type: Boolean,
+    default: false,
   },
 });
 

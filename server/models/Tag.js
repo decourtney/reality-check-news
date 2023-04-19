@@ -1,14 +1,16 @@
-const mongoose = require("mongoose");
+// Tag is a stretch goal
 
-const { Schema } = mongoose;
+// const mongoose = require("mongoose");
 
-const tagSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-});
+// const { Schema } = mongoose;
 
-const Tag = mongoose.model("Tag", tagSchema);
+// const tagSchema = new Schema({
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+// });
 
-module.exports = Tag;
+// const Tag = mongoose.model("Tag", tagSchema);
+
+// module.exports = Tag;
