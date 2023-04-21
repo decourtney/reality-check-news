@@ -20,10 +20,6 @@ const commentSchema = new Schema(
       of: String,
       default: {},
     },
-    article: {
-      type: Schema.Types.ObjectId,
-      ref: "Article",
-    },
   },
   { timestamps: true }
 );
