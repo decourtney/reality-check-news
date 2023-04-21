@@ -39,6 +39,7 @@ const userSchema = new Schema({
   isContentCreator: {
     type: Boolean,
     default: false,
+    required: true
   },
 });
 
