@@ -6,33 +6,52 @@ const typeDefs = gql`
     name: String
   }
 
-  type Product {
+  type Profile {
     _id: ID
     name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
+    bio: String
+    avatar: String
+    website: String
+    social: String
   }
 
-  type Order {
+  // type Reaction {
+  //   type: String
+  //   enum: []
+  // }
+
+  type Article {
     _id: ID
-    purchaseDate: String
-    products: [Product]
+    title: String
+    body: String
+    media: Media
+    user: User
+    categories: Category
+    comments: [Comment]
+  }
+
+  type Post {
+    _id: ID
+    title: String
+    content: String
+    media: Media
+    // reactions: 
+    user: User
   }
 
   type User {
     _id: ID
     firstName: String
     lastName: String
+    username: String
     email: String
-    orders: [Order]
+    profile: Profile
+    isContentCreator: Boolean
   }
 
-  type Checkout {
-    session: ID
-  }
+  // type Post {
+  //   session: ID
+  // }
 
   type Auth {
     token: ID
@@ -41,18 +60,17 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
+    articles:(category: ID, name: String): [Article]
+    posts(category: ID, name: String): [Post]
+    profile(_id: ID!): Profile
     user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
+    addArticle(articles: [ID]!): Article
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    updateProfile(_id: ID!, name: String!, bio: String): Profile
     login(email: String!, password: String!): Auth
   }
 `;

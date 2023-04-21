@@ -4,11 +4,12 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const profileSchema = new mongoose.Schema({
+const profileSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
+  location: String,
   bio: String,
   avatar: String, // URL of the user's profile picture
   website: String,

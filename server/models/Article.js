@@ -6,22 +6,27 @@ const { Schema } = mongoose;
 
 const articleSchema = new Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    body: {
-      type: String,
-      required: true,
-    },
-    media: {
-      type: Schema.Types.ObjectId,
-      ref: "Media",
-    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    reactions: {
+      type: Map,
+      of: String,
+      default: {},
+    },
+    media: {
+      type: Schema.Types.ObjectId,
+      ref: "Media",
     },
     categories: [
       {
