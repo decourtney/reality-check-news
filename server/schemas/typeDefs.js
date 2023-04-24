@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Category {
@@ -12,12 +12,12 @@ const typeDefs = gql`
     user: User
     article: Article
     comment: Comment
-   }
+  }
 
-   enum ReactionType {
+  enum ReactionType {
     LIKE
     DISLIKE
-   }
+  }
 
   type Article {
     _id: ID
@@ -62,10 +62,10 @@ const typeDefs = gql`
     location: String
     avatar: String
     website: String
-    social: SocialInput
+    social: Social
   }
 
-  input SocialInput {
+  type Social {
     twitter: String
     facebook: String
     instagram: String
@@ -79,13 +79,12 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    articles: [Article]
     article(id: ID!): Article
+    articles: [Article]
     comment(id: ID!): [Comment]
     comments: [Comment]
-    profile(_id: ID!): Profile
     user(username: String!): User
-    me: 
+    me: User
   }
 
   type Mutation {
