@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/reality-check');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/realitycheckDB');
 
 module.exports = mongoose.connection;

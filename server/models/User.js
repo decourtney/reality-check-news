@@ -31,15 +31,15 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  profile: {
-    type: Schema.Types.ObjectId,
-    ref: "Profile",
-    required: true,
-  },
   isContentCreator: {
     type: Boolean,
     default: false,
     required: true
+  },
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+    required: true,
   },
 });
 

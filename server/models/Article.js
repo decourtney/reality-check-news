@@ -6,11 +6,6 @@ const { Schema } = mongoose;
 
 const articleSchema = new Schema(
   {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
     title: {
       type: String,
       required: true,
@@ -19,11 +14,17 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
-    reactions: {
-      type: Map,
-      of: String,
-      default: {},
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
+    reactions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Reaction",
+      }
+    ],  
     media: {
       type: Schema.Types.ObjectId,
       ref: "Media",
