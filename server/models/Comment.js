@@ -6,20 +6,21 @@ const { Schema } = mongoose;
 
 const commentSchema = new Schema(
   {
+    content: {
+      type: String,
+      required: true,
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    content: {
-      type: String,
-      required: true,
-    },
-    reactions: {
-      type: Map,
-      of: String,
-      default: {},
-    },
+    reactions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Reaction",
+      }
+    ],
   },
   { timestamps: true }
 );

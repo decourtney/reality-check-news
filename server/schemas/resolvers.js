@@ -5,50 +5,70 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    categories: async () => {
+    // We might not need a query for Categories
+    categories: async () =>
+    {
       return await Category.find();
     },
-    articles: async (parent, { category, name }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category;
-      }
-
-      if (name) {
-        params.name = {
-          $regex: name
-        };
-      }
-
-      return await Article.find(params).populate('category');
+    // Query will return an Article by ID
+    article: async (parent, { id }) =>
+    {
+      return await Article.findById(_id)
+        .populate('user')
+        .populate('reactions')
+        .populate('media')
+        .populate('categories')
+        .populate('comments');
     },
-    article: async (parent, { _id }) => {
-      return await Article.findById(_id).populate('category');
+    // Query will return all Articles
+    articles: async (parent) =>
+    {
+      return await Article.find();
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'articles',
-          populate: { path: 'category' }
-        });
-    
-        return user;
-      }
+    // Query a single comment - might not need.
+    comment: async (parent, { _id }) =>
+    {
+      return await Comment.findById(_id)
+        .populate('user')
+        .populate('reactions');
+    },
+    // Query all comments - might not need.
+    comments: async (parent) =>
+    {
 
-      throw new AuthenticationError('Not logged in');
-    }
+    },
+    user: async (parent, { username }) =>
+    {
+      try
+      {
+        return await User.findOne({ username });
+      }
+      catch (err)
+      {
+        throw new Error('Could not find that user.')
+      }
+    },
+    me: async (parent, args, context) =>
+    {
+      if (context.user)
+      {
+        return await User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("Cannot find a user with this id!");
+    },
   },
   Mutation: {
-    addUser: async (parent, args) => {
+    addUser: async (parent, args) =>
+    {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },
-    addArticle: async (parent, { articles }, context) => {
+    addArticle: async (parent, { articles }, context) =>
+    {
       console.log(context);
-      if (context.user) {
+      if (context.user)
+      {
         const article = new Article({ content: articles });
 
         await User.findByIdAndUpdate(context.user._id, { $push: { articles: article } });
@@ -58,31 +78,37 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
+    updateUser: async (parent, args, context) =>
+    {
+      if (context.user)
+      {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
       }
 
       throw new AuthenticationError('Not logged in');
     },
-    updateProfile: async (parent, { _id, name, bio }) => {
-    const updatedProfile = await Profile.findOneAndUpdate(
-     { _id: ObjectId(_id) },
-     { $set: {name, bio }},
-     { returnOriginal: false}
-    );
-    return updatedProfile;
+    updateProfile: async (parent, { _id, name, bio }) =>
+    {
+      const updatedProfile = await Profile.findOneAndUpdate(
+        { _id: ObjectId(_id) },
+        { $set: { name, bio } },
+        { returnOriginal: false }
+      );
+      return updatedProfile;
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }) =>
+    {
       const user = await User.findOne({ email });
 
-      if (!user) {
+      if (!user)
+      {
         throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
+      if (!correctPw)
+      {
         throw new AuthenticationError('Incorrect credentials');
       }
 

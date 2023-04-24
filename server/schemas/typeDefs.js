@@ -6,37 +6,43 @@ const typeDefs = gql`
     name: String
   }
 
-  type Profile {
-    _id: ID
-    name: String
-    bio: String
-    avatar: String
-    website: String
-    social: String
-  }
+  type Reaction {
+    id: ID
+    type: ReactionType
+    user: User
+    article: Article
+    comment: Comment
+   }
 
-  // type Reaction {
-  //   type: String
-  //   enum: []
-  // }
+   enum ReactionType {
+    LIKE
+    DISLIKE
+   }
 
   type Article {
     _id: ID
     title: String
-    body: String
-    media: Media
+    content: String
     user: User
-    categories: Category
+    reactions: [Reaction]
+    media: Media
+    categories: [Category]
     comments: [Comment]
   }
 
-  type Post {
+  type Comment {
     _id: ID
     title: String
     content: String
-    media: Media
-    // reactions: 
     user: User
+    reactions: [String]
+  }
+
+  type Media {
+    _id: ID
+    type: String
+    url: String
+    article: Article
   }
 
   type User {
@@ -45,13 +51,26 @@ const typeDefs = gql`
     lastName: String
     username: String
     email: String
-    profile: Profile
     isContentCreator: Boolean
+    profile: Profile
   }
 
-  // type Post {
-  //   session: ID
-  // }
+  type Profile {
+    _id: ID
+    name: String
+    bio: String
+    location: String
+    avatar: String
+    website: String
+    social: SocialInput
+  }
+
+  input SocialInput {
+    twitter: String
+    facebook: String
+    instagram: String
+    linkedin: String
+  }
 
   type Auth {
     token: ID
@@ -60,10 +79,13 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    articles:(category: ID, name: String): [Article]
-    posts(category: ID, name: String): [Post]
+    articles: [Article]
+    article(id: ID!): Article
+    comment(id: ID!): [Comment]
+    comments: [Comment]
     profile(_id: ID!): Profile
-    user: User
+    user(username: String!): User
+    me: 
   }
 
   type Mutation {
