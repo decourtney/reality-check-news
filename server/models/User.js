@@ -41,6 +41,12 @@ const userSchema = new Schema({
     ref: "Profile",
     required: true,
   },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    }
+  ]
 });
 
 // set up pre-save middleware to create password

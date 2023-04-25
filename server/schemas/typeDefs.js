@@ -32,7 +32,6 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
-    title: String
     content: String
     user: User
     reactions: [String]
@@ -79,7 +78,7 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    article(id: ID!): Article
+    article(articleId: ID!): Article
     articles: [Article]
     comment(id: ID!): [Comment]
     comments: [Comment]
@@ -88,6 +87,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addComment(articleId: ID!, content: String!, userId: ID!): Comment
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addArticle(articles: [ID]!): Article
     updateUser(firstName: String, lastName: String, email: String, password: String): User
