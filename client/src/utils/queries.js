@@ -64,30 +64,34 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ARTICLE = gql`
-  {
-    article {
+  query Query($articleId: ID!) {
+    article(articleId: $articleId) {
       _id
-      title
-      content
-      user {
-        username
-      }
-      reactions {
-        type
-      }
-      media
-      categories {
-        name
-      }
       comments {
+        _id
         content
-        user{
+        user {
           username
         }
-        reactions{
-          type
-        }
+      }
+      content
+      media {
+        _id
+        url
+      }
+      reactions {
+        id
+        type
+      }
+      title
+      user {
+        username
       }
     }
   }
 `;
+
+export const QUERY_ARTICLES = gql`
+  
+`;
+

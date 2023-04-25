@@ -31,3 +31,12 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation Mutation($articleId: ID!, $content: String!) {
+    addComment(articleId: $articleId, content: $content) {
+      _id
+      }
+    }
+  }
+`;
