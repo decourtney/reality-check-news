@@ -91,6 +91,25 @@ export const QUERY_ARTICLE = gql`
   }
 `;
 
+export const QUERY_PROFILE = gql`
+query profile($id: ID!) {
+  profile(_id: $id) {
+    name
+    _id
+    avatar
+    bio
+    location
+    social {
+      facebook
+      instagram
+      linkedin
+      twitter
+    }
+    website
+  }
+}
+`;
+
 export const QUERY_ARTICLES = gql`
   
 `;
