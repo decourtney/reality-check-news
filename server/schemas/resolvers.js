@@ -80,8 +80,13 @@ const resolvers = {
 
       // throw new AuthenticationError("You must be logged in to post.");
     },
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+
+    addUser: async (parent, args, context) => {
+      const profile = await Profile.create({name: args.username});
+      const user = await User.create({
+        ...args,
+        profile: profile._id
+      });
       const token = signToken(user);
       return { token, user };
     },
