@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Profile, Article, Category, Comment } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Profile, Article, Category, Comment, Reaction } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -25,7 +25,10 @@ const resolvers = {
     },
     // Query will return all Articles
     articles: async (parent) => {
-      return await Article.find().populate('user');
+      return await Article.find()
+        .populate("user")
+        .populate({ path: "comments", populate: { path: "user" } })
+        .populate("reactions");
     },
     // Query a single comment - might not need.
     comment: async (parent, { _id }) => {
@@ -60,6 +63,13 @@ const resolvers = {
     }
   },
   Mutation: {
+    addReaction: async (parent, { type, userId, ...rest }, context) => {
+      // if (context.user) {
+      const reaction = new Reaction({type, user: userId, ...rest})
+      await reaction.save();
+      return reaction;
+      // }
+    },
     addComment: async (parent, { articleId, content, userId }, context) => {
       // if (context.user) {
       try {
