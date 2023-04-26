@@ -87,7 +87,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addReaction(userId: ID!, type: ReactionType, articleId: ID, commentId: ID): Reaction
+    addReaction(userId: ID!, type: ReactionType!, articleId: ID, commentId: ID): Reaction
     addComment(articleId: ID!, content: String!, userId: ID!): Comment
     addUser(firstName: String!, lastName: String!, email: String!, username: String!, password: String!): Auth
     addArticle(articles: [ID]!): Article

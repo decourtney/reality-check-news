@@ -25,10 +25,67 @@ const resolvers = {
     },
     // Query will return all Articles
     articles: async (parent) => {
-      return await Article.find()
-        .populate("user")
-        .populate({ path: "comments", populate: { path: "user" } })
-        .populate("reactions");
+      // return await Article.find()
+      //   .populate("user")
+      //   .populate({ path: "comments", populate: { path: "user" } })
+      //   .populate("reactions");
+      return await Article.aggregate([
+        // Look up the reactions associated with each article
+        {
+          $lookup: {
+            from: "reactions",
+            localField: "_id",
+            foreignField: "article",
+            as: "reactions",
+          },
+        },
+        // Group by article ID and count the number of likes and dislikes
+        {
+          $group: {
+            _id: "$_id",
+            title: { $first: "$title" },
+            content: { $first: "$content" },
+            user: { $first: "$user" },
+            media: { $first: "$media" },
+            categories: { $first: "$categories" },
+            comments: { $first: "$comments" },
+            likes: {
+              $sum: {
+                $cond: {
+                  if: { $eq: ["$reactions.type", "like"] },
+                  then: 1,
+                  else: 0,
+                },
+              },
+            },
+            dislikes: {
+              $sum: {
+                $cond: {
+                  if: { $eq: ["$reactions.type", "dislike"] },
+                  then: 1,
+                  else: 0,
+                },
+              },
+            },
+          },
+        },
+        // Sort by the number of likes in descending order
+        { $sort: { likes: -1 } },
+        // Project only the fields you need
+        {
+          $project: {
+            _id: 1,
+            title: 1,
+            content: 1,
+            user: 1,
+            media: 1,
+            categories: 1,
+            comments: 1,
+            likes: 1,
+            dislikes: 1,
+          },
+        },
+      ]);
     },
     // Query a single comment - might not need.
     comment: async (parent, { _id }) => {
@@ -79,6 +136,7 @@ const resolvers = {
       // throw new AuthenticationError("You must be logged in to post.");
     },
     addUser: async (parent, args) => {
+      const profile = await Profile.create({name: args.fname})
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
