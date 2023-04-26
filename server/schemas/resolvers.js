@@ -100,12 +100,24 @@ const resolvers = {
         throw new Error("Could not find that user.");
       }
     },
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findOne({ _id: context.user._id });
-      }
-      throw new AuthenticationError("Cannot find a user with this id!");
+    article: async (parent, { _id }) => {
+      return await Article.findById(_id).populate('category');
     },
+    user: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: 'articles',
+          populate: { path: 'category' }
+        });
+
+        return user;
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    profile: async (parent, { _id }) => {
+      return await Profile.findById(_id);
+    }
   },
   Mutation: {
     addReaction: async (parent, { type, userId, ...rest }, context) => {
@@ -135,26 +147,28 @@ const resolvers = {
 
       // throw new AuthenticationError("You must be logged in to post.");
     },
-    addUser: async (parent, args) => {
-      const profile = await Profile.create({name: args.fname})
-      const user = await User.create(args);
+
+    addUser: async (parent, args, context) => {
+      const profile = await Profile.create({name: args.username});
+      const user = await User.create({
+        ...args,
+        profile: profile._id
+      });
       const token = signToken(user);
       return { token, user };
     },
-    addArticle: async (parent, { articles }, context) => {
-      console.log(context);
-      // if (context.user) {
-      const article = new Article({ content: articles });
-
-      await User.findByIdAndUpdate(context.user._id, {
-        $push: { articles: article },
-      });
-
+    // addArticle works
+    addArticle: async (_, { userId, content, title }) => {
+      // create new article object
+      const article = await Article.create({ content: content, user: userId, title: title });
+    
+      // add article to user's list of articles
+      await User.findByIdAndUpdate(userId, { $push: { articles: article } });
+      console.log(article);
+      // return the newly created article object
       return article;
-      // }
-
-      throw new AuthenticationError("Not logged in");
     },
+    
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -162,11 +176,12 @@ const resolvers = {
         });
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
+    // updateProfile works
     updateProfile: async (parent, { _id, name, bio }) => {
       const updatedProfile = await Profile.findOneAndUpdate(
-        { _id: ObjectId(_id) },
+        { _id: _id },
         { $set: { name, bio } },
         { returnOriginal: false }
       );

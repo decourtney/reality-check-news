@@ -84,13 +84,14 @@ const typeDefs = gql`
     comments: [Comment]
     user(username: String!): User
     me: User
+    profile(_id: ID!): Profile
   }
 
   type Mutation {
     addReaction(userId: ID!, type: ReactionType!, articleId: ID, commentId: ID): Reaction
     addComment(articleId: ID!, content: String!, userId: ID!): Comment
-    addUser(firstName: String!, lastName: String!, email: String!, username: String!, password: String!): Auth
-    addArticle(articles: [ID]!): Article
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!, username: String!): Auth
+    addArticle(userId: ID!, content: String!, title: String!): Article
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProfile(_id: ID!, name: String!, bio: String): Profile
     login(email: String!, password: String!): Auth
