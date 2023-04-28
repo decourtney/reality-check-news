@@ -8,7 +8,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import UserLandingPage from './pages/UserLandingPage';
 import NotFound from './pages/NotFound';
-
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
