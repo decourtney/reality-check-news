@@ -72,7 +72,7 @@ const typeDefs = gql`
   }
 
   type Auth {
-    token: ID
+    token: ID!
     user: User
   }
 
@@ -93,7 +93,7 @@ const typeDefs = gql`
     addUser(firstName: String!, lastName: String!, email: String!, password: String!, username: String!): Auth
     addArticle(userId: ID!, content: String!, title: String!): Article
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProfile(_id: ID!, name: String!, bio: String): Profile
+    updateProfile(userId: ID!, name: String, bio: String): Profile
     login(email: String!, password: String!): Auth
   }
 `;
