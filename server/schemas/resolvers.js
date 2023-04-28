@@ -179,9 +179,9 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     // updateProfile works
-    updateProfile: async (parent, { _id, name, bio }) => {
+    updateProfile: async (parent, { userId, name, bio }) => {
       const updatedProfile = await Profile.findOneAndUpdate(
-        { _id: _id },
+        { _id: userId },
         { $set: { name, bio } },
         { returnOriginal: false }
       );

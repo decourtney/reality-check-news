@@ -48,7 +48,7 @@ db.once("open", async () => {
       lastName: "Doe",
       username: "johndoe",
       email: "johndoe@gmail.com",
-      password: "password123",
+      password: "password",
       profile: new mongoose.Types.ObjectId(),
     },
     {
@@ -56,7 +56,7 @@ db.once("open", async () => {
       lastName: "Doe",
       username: "janedoe",
       email: "janedoe@gmail.com",
-      password: "password456",
+      password: "password",
       profile: new mongoose.Types.ObjectId(),
     },
     {
@@ -64,7 +64,7 @@ db.once("open", async () => {
       lastName: "Smith",
       username: "bobsmith",
       email: "bobsmith@gmail.com",
-      password: "password789",
+      password: "password",
       profile: new mongoose.Types.ObjectId(),
     },
   ];
