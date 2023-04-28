@@ -16,11 +16,11 @@ const Contact = () => {
     setEmailError(!validateEmail(currentEmail));
   };
   return (
-    <div className="flex justify-center items-center p-4 pt-10">
+    <div className="flex justify-center items-center p-4 pb-6 ">
       <form
         action="https://getform.io/f/a71ead77-8361-482f-aadf-faf72ebee6d9"
         method="POST"
-        className="bg-green-400 border-3 border-rounded p-4 flex flex-col max-w-[600px] w-full"
+        className="bg-gray-800 border-yellow-500 border-rounded-lg p-7 flex flex-col max-w-[600px] w-full"
       >
         <div className="pb-4">
           <p className="text-4xl font-bold inline border-b-4 border-yellow-500">

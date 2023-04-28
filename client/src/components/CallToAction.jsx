@@ -2,7 +2,7 @@ import React from "react";
 
 const CallToAction = () => {
   return (
-    <section className="bg-gradient-to-r from-green-400 to-black py-12">
+    <section className="py-12 justify-center text-center">
       <div className="container mx-auto px-6 md:px-0">
         <h2 className="text-4xl font-bold text-white mb-4">
           Join our community today

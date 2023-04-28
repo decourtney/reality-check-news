@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 
 body{
-    background-color: #000300;
+    background: linear-gradient(to right, #38a169, #68d391, black);
     color: white;
 }
 

@@ -23,16 +23,16 @@ const reviewData = [
 
 const Reviews = () => {
   return (
-    <div className="justify-center py-20 px-20 md:px-8 drop-shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-center">Customer Reviews</h2>
-      <div className="reviews grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="text-gray-600 justify-center pt-10 pb-15 px-4 md:px-8 lg:px-16 drop-shadow-md">
+      <h2 className="text-white text-2xl font-bold mb-4 text-center">Customer Reviews</h2>
+      <div className="reviews grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {reviewData.map(review => (
-          <div key={review.id} className="bg-yellow-500 rounded-lg shadow-md p-4">
+          <div key={review.id} className="bg-yellow-200 rounded-lg shadow-md p-4">
             <div className="flex items-center mb-4">
               <img src={review.avatar} alt={review.author} className="w-12 h-12 rounded-full mr-4" />
               <div>
                 <p className="font-bold text-lg">{review.author}</p>
-                <p className="text-gray-600 text-sm">Lorem ipsum dolor sit amet</p>
+                <p className="text-gray-400 text-sm">Lorem ipsum dolor sit amet</p>
               </div>
             </div>
             <p>{review.content}</p>
@@ -42,5 +42,6 @@ const Reviews = () => {
     </div>
   );
 };
+
 
 export default Reviews;

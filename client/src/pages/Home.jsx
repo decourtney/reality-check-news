@@ -1,48 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { getArticles } from '../components/API';
-import NewsCards from '../components/NewsCards';
-import Search from '../components/Search';
+import React from 'react';
+import Hero from '../components/Hero';
+import Features from '../components/Features';
+import Reviews from '../components/Reviews';
+import CallToAction from '../components/CallToAction';
 
 const Home = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await getArticles();
-        setArticles(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchArticles();
-  }, []);
-
-  const handleSearch = async (query) => {
-    try {
-      const response = await getArticles(`/search?q=${query}`);
-      setArticles(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div>
-      <h1>Reality Check News</h1>
-      <Search onSearch={handleSearch} />
-      {loading && <p>Loading articles...</p>}
-      {!loading && articles.length === 0 && <p>No articles found</p>}
-      {!loading && articles.length > 0 && (
-        <div>
-          {articles.map((article) => (
-            <NewsCards key={article.id} article={article} />
-          ))}
-        </div>
-      )}
+      <Hero 
+        title="Home"
+        subtitle="We are a social media platform that focuses on news coverage driven by registered users and content creators."
+        buttonText="Sign Up"
+        buttonLink="/signup"
+        backgroundImage=""
+      />
+      <Features />
+      <Reviews />
+      <CallToAction 
+        title="Join us today and start sharing your news stories with the world."
+        buttonText="Sign Up"
+        buttonLink="/signup"
+      />
     </div>
   );
 };

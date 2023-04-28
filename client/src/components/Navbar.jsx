@@ -9,7 +9,8 @@ const Navbar = () => {
         <img src={logo} alt="Logo" className="mr-2 h-full bg-transparent" />
       </Link>
       <ul className="nav-links flex items-center">
-        <li className='mr-6 text-white hover:text-gray-200'><Link to="/about">About Us</Link></li>
+        <li className='mr-6 text-white hover:text-gray-200'><Link to="/">Home</Link></li>
+        <li className='mr-6 text-white hover:text-gray-200'><Link to="/articles">Articles</Link></li>
         <li className='mr-6 text-white hover:text-gray-200'><Link to="/contact">Contact Us</Link></li>
         <li className="mr-6 text-white hover:text-gray-200"><Link to="/signup">Sign Up</Link></li>
         <li className="mr-6 text-white hover:text-gray-200"><Link to="/login">Log In</Link></li>
