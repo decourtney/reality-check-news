@@ -45,9 +45,9 @@ const RegistrationForm = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-3xl font-bold mb-8">Register</h1>
-      <form className="flex flex-col items-center">
+      <form className="flex flex-col items-center space-y-4">
         <input
-          className="border border-gray-500 rounded-md px-2 py-1 mb-4 w-80"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="firstName"
           value={userFormData.firstName}
@@ -56,7 +56,7 @@ const RegistrationForm = () => {
           required
         />
         <input
-          className="border border-gray-500 rounded-md px-2 py-1 mb-4 w-80"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="lastName"
           value={userFormData.lastName}
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
           required
         />
         <input
-          className="border border-gray-500 rounded-md px-2 py-1 mb-4 w-80"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="email"
           name="email"
           value={userFormData.email}
@@ -74,7 +74,7 @@ const RegistrationForm = () => {
           required
         />
         <input
-          className="border border-gray-500 rounded-md px-2 py-1 mb-4 w-80"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="username"
           value={userFormData.username}
@@ -83,12 +83,12 @@ const RegistrationForm = () => {
           required
         />
         <input
-          className="border border-gray-500 rounded-md px-2 py-1 mb-4 w-80"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="password"
           name="password"
           value={userFormData.password}
           onChange={handleInputChange}
-          placeholder="Password"
+          placeholder="******************"
           required
         />
         <button

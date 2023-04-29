@@ -155,7 +155,7 @@ const resolvers = {
         profile: profile._id
       });
       const token = signToken(user);
-      return { token, user };
+      return { token };
     },
     // addArticle works
     addArticle: async (_, { userId, content, title }) => {
@@ -202,7 +202,7 @@ const resolvers = {
 
       const token = signToken(user);
 
-      return { token, user };
+      return { token };
     },
   },
 };

@@ -6,24 +6,23 @@ import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Login = () => {
-    const [userFormData, setUserFormData] = useState({
-      email: "",
-      password: "",
-    });
+  const [userFormData, setUserFormData] = useState({
+    email: "",
+    password: "",
+  });
 
   const [login, { error, data }] = useMutation(LOGIN);
 
-   const handleInputChange = (event) => {
-     const { name, value } = event.target;
-     setUserFormData({ ...userFormData, [name]: value });
-   };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-try {
+    try {
       const { data } = await login({ variables: { ...userFormData } });
-
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
@@ -34,6 +33,7 @@ try {
       password: "",
     });
   };
+
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
