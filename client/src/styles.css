@@ -621,6 +621,10 @@ video {
   pointer-events: none;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -631,6 +635,10 @@ video {
 
 .inset-y-0 {
   top: 0px;
+  bottom: 0px;
+}
+
+.bottom-0 {
   bottom: 0px;
 }
 
@@ -652,10 +660,6 @@ video {
 
 .right-2\.5 {
   right: 0.625rem;
-}
-
-.m-auto {
-  margin: auto;
 }
 
 .mx-3 {
@@ -715,6 +719,10 @@ video {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
 }
 
 .block {
@@ -796,10 +804,6 @@ video {
 
 .items-center {
   align-items: center;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1192,6 +1196,19 @@ body{
   color: white;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 .hover\:border-gray-500:hover {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
@@ -1385,4 +1402,3 @@ body{
     padding-right: 2.5rem;
   }
 }
-
