@@ -9,24 +9,24 @@ const Features = () => {
         <h2 className="text-4xl text-center font-bold text-green-800 mb-4">
           Our Features
         </h2>
-        <ul className="pl-6 items-center text-lg text-gray-800">
-          <li className="mb-4 flex text-center justify-center sm:justify-start">
+        <ul className="pl-6 md:items-center text-base md:text-lg text-gray-800">
+          <li className="mb-4 flex text-left justify-center sm:justify-start">
             <FaCheck className="text-green-800 mr-2" />
             Real-time news coverage from a global community of users
           </li>
-          <li className="mb-4 flex text-center justify-center sm:justify-start">
+          <li className="mb-4 flex text-left md:justify-center justify-start">
             <FaCheck className="text-green-800 mr-2" />
             Rating system driven by registered users and creators
           </li>
-          <li className="mb-4 flex text-center justify-center sm:justify-start">
+          <li className="mb-4 flex text-left md:justify-center justify-start">
             <FaCheck className="text-green-800 mr-2" />
             User-generated content for diverse and unique perspectives
           </li>
-          <li className="mb-4 flex text-center justify-center sm:justify-start">
+          <li className="mb-4 flex text-left md:justify-center justify-start">
             <FaCheck className="text-green-800 mr-2" />
             No censorship, free expression for all
           </li>
-          <li className="mb-4 flex text-center justify-center sm:justify-start">
+          <li className="mb-4 flex text-left md:justify-center justify-start">
             <FaCheck className="text-green-800 mr-2" />
             Location-based weighting to ensure relevance to users
           </li>

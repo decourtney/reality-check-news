@@ -32,7 +32,6 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
-    title: String
     content: String
     user: User
     reactions: [String]
@@ -73,25 +72,28 @@ const typeDefs = gql`
   }
 
   type Auth {
-    token: ID
+    token: ID!
     user: User
   }
 
   type Query {
     categories: [Category]
-    article(id: ID!): Article
+    article(articleId: ID!): Article
     articles: [Article]
     comment(id: ID!): [Comment]
     comments: [Comment]
     user(username: String!): User
     me: User
+    profile(_id: ID!): Profile
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addArticle(articles: [ID]!): Article
+    addReaction(userId: ID!, type: ReactionType!, articleId: ID, commentId: ID): Reaction
+    addComment(articleId: ID!, content: String!, userId: ID!): Comment
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!, username: String!): Auth
+    addArticle(userId: ID!, content: String!, title: String!): Article
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProfile(_id: ID!, name: String!, bio: String): Profile
+    updateProfile(userId: ID!, name: String, bio: String): Profile
     login(email: String!, password: String!): Auth
   }
 `;

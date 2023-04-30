@@ -9,7 +9,7 @@ const reactionSchema = new Schema(
     type: {
       type: String,
       required: true,
-      enum: ["like", "dislike"],
+      enum: ["LIKE", "DISLIKE"],
     },
     user: {
       type: Schema.Types.ObjectId,

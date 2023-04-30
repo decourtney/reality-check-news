@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ userData }) => {
   return (
-    <div className="user-card">
-      <img src={user.profilePicture} alt={user.username} />
-      <h2>{user.username}</h2>
-      <p>{user.bio}</p>
-      <button>Follow</button>
+    <div className="p-4 shadow-md">
+      <img
+        className="rounded-full h-32 w-32 object-cover"
+        src={`https://ui-avatars.com/api/?background=random&name=${userData.username}`}
+        alt={`${userData.username} profile`}
+      />
+      <h3 className="text-xl mb-2">{userData.username}</h3>
+      <p className="text-gray-400">{userData.email}</p>
     </div>
   );
 };
