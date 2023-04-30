@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const RegistrationForm = () => {
+const Signup = () => {
   const [userFormData, setUserFormData] = useState({
     firstName: "",
     lastName: "",
@@ -43,70 +43,74 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold mb-8">Register</h1>
-      <form className="flex flex-col items-center space-y-4">
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="firstName"
-          value={userFormData.firstName}
-          onChange={handleInputChange}
-          placeholder="First Name"
-          required
-        />
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="lastName"
-          value={userFormData.lastName}
-          onChange={handleInputChange}
-          placeholder="Last Name"
-          required
-        />
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="email"
-          name="email"
-          value={userFormData.email}
-          onChange={handleInputChange}
-          placeholder="Email"
-          required
-        />
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="username"
-          value={userFormData.username}
-          onChange={handleInputChange}
-          placeholder="Username"
-          required
-        />
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="password"
-          name="password"
-          value={userFormData.password}
-          onChange={handleInputChange}
-          placeholder="******************"
-          required
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          type="submit"
-          onClick={handleSubmit}
-        >
-          Register
-        </button>
-      </form>
-      <p className="text-sm mt-4">
-        Already have an account?{" "}
-        <a href="/login" className="text-blue-500">
-          Login
-        </a>
-      </p>
-    </div>
+    <>
+      <div className="flex justify-center items-center p-5 shadow-md">
+        <form className="bg-gray-800 border-yellow-500 border-rounded-lg p-7 flex flex-col max-w-[600px] w-full">
+          <div className="pb-4">
+            <h1 className="text-4xl font-bold inline border-b-4 border-yellow-500">
+              Register
+            </h1>
+            <p className="text-lg font-semibold gray-300 py-4">
+              Create an account to join our community and share your stories
+              with the world.{" "}
+            </p>
+          </div>
+          <input
+            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="firstName"
+            value={userFormData.firstName}
+            onChange={handleInputChange}
+            placeholder="First Name"
+            required
+          />
+          <input
+            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="lastName"
+            value={userFormData.lastName}
+            onChange={handleInputChange}
+            placeholder="Last Name"
+            required
+          />
+          <input
+            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="email"
+            name="email"
+            value={userFormData.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+            required
+          />
+          <input
+            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="username"
+            value={userFormData.username}
+            onChange={handleInputChange}
+            placeholder="Username"
+            required
+          />
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            name="password"
+            value={userFormData.password}
+            onChange={handleInputChange}
+            placeholder="******************"
+            required
+          />
+          <button
+            className="border-yellow-500 bg-yellow-500 font-bold border-2 px-4 py-3 my-8 mx-auto flex items-center hover:bg-gray-500 hover:border-gray-500"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
-export default RegistrationForm;
+export default Signup;

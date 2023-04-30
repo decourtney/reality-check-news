@@ -11,7 +11,7 @@ const Search = ({ handleSearch }) => {
   return (
     <div className="text-light bg-dark p-5">
       <container>
-        <h1>Search for an Article</h1>
+        <h1 className='text-lg font-semibold gray-300 py-4'>Search for an Article</h1>
         <form onSubmit={handleSubmit}>
           <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
           <div class="relative">
@@ -35,13 +35,5 @@ const Search = ({ handleSearch }) => {
   );
 };
 
-// <form
-// name="searchTerm"
-// value={searchTerm}
-// onChange={(e) => setSearchTerm(e.target.value)}
-// type="text"
-// size="lg"
-// placeholder="Search for an article..."
-// />
 
 export default Search;
