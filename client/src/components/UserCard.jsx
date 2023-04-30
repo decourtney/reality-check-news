@@ -4,7 +4,7 @@ const UserCard = ({ userData }) => {
   return (
     <div className="p-4 shadow-md">
       <img
-        className="rounded-full h-32 w-32 object-cover"
+        className="rounded-full h-24 w-24 object-cover"
         src={`https://ui-avatars.com/api/?background=random&name=${userData.username}`}
         alt={`${userData.username} profile`}
       />

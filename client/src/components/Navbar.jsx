@@ -16,11 +16,11 @@ const Navbar = () => {
   return (
     <>
       {/* menu */}
-      <nav className="navbar bg-gray-800 py-3 px-6 flex justify-between md:flex">
-        <Link to="/" className="logo text-white font-bold text-lg flex items-center">
+      <nav className="navbar flex bg-gray-800 items-center p-4">
+        <Link to="/" className="logo text-white font-bold text-lg flex items-center justify-start">
           <img src={logo} alt="Logo" className="mr-2 h-14" />
         </Link>
-        <ul className="nav-links hidden md:flex items-center">
+        <ul className="nav-links hidden md:flex justify-end ml-auto">
           <li className={`mr-6 text-white hover:text-gray-200 ${location.pathname === '/' ? 'text-yellow-500' : ''}`}>
             <Link to="/">Home</Link>
           </li>
@@ -36,29 +36,31 @@ const Navbar = () => {
         </ul>
 
         {/* Hamburger Menu */}
-        <div onClick={toggleMenu} className="menu-icon block cursor-pointer md:hidden">
+        <div onClick={toggleMenu} className="menu-icon block cursor-pointer md:hidden ml-auto">
           {!menuOpen ? <FaBars /> : <FaTimes />}
         </div>
 
         {/* Mobile Menu */}
-        <div>
-        <ul
-          className={`nav-links md:hidden ${menuOpen ? 'block' : 'hidden'}`}
+        <div
+          className={`nav-links md:hidden fixed top-0 left-0 w-screen h-screen bg-gray-800 text-white ${
+            menuOpen ? 'flex flex-col items-center justify-center' : 'hidden'
+          }`}
           onClick={handleMobileClick}
         >
-          <li className={`text-white hover:text-gray-200 ${location.pathname === '/' ? 'text-yellow-500' : ''}`}>
-            <Link to="/">Home</Link>
-          </li>
-          <li className={`text-white hover:text-gray-200 ${location.pathname === '/articles' ? 'text-yellow-500' : ''}`}>
-            <Link to="/articles">Articles</Link>
-          </li>
-          <li className={`text-white hover:text-gray-200 ${location.pathname === '/contact' ? 'text-yellow-500' : ''}`}>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li className={`text-white hover:text-gray-200 ${location.pathname === '/signup' ? 'text-yellow-500' : ''}`}>
-            <Link to="/login">Login | Register</Link>
-          </li>
-        </ul>
+          <ul>
+            <li className={`text-white font-bold text-lg mb-6 ${location.pathname === '/' ? 'text-yellow-500' : ''}`}>
+              <Link to="/">Home</Link>
+            </li>
+            <li className={`text-white font-bold text-lg mb-6 ${location.pathname === '/articles' ? 'text-yellow-500' : ''}`}>
+              <Link to="/articles">Articles</Link>
+            </li>
+            <li className={`text-white font-bold text-lg mb-6 ${location.pathname === '/contact' ? 'text-yellow-500' : ''}`}>
+              <Link to="/contact">Contact Us</Link>
+            </li>
+            <li className={`text-white font-bold text-lg mb-6 ${location.pathname === '/signup' ? 'text-yellow-500' : ''}`}>
+              <Link to="/login">Login | Register</Link>
+            </li>
+          </ul>
         </div>
       </nav>
     </>

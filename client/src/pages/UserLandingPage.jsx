@@ -1,5 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import {
+  faThumbsUp,
+  faShare,
+  faComment,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UserLandingPage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -62,7 +68,7 @@ const UserLandingPage = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-3/4 lg:w-4/5 p-5 md:px-12 lg:24 h-full overflow-x-scroll antialiased">
+        <div className="w-full md:w-3/4 p-5 md:px-12 h-full overflow-x-scroll antialiased">
           <div className=" w-full shadow rounded-lg p-5">
             <textarea
               className="bg-gray-100 w-full rounded-lg shadow border p-2"
@@ -85,7 +91,7 @@ const UserLandingPage = () => {
                 </button>
               </div>
             </div>
-            <div className="mt-3 flex flex-col">
+            <div className="mt-3 p-20 my-10 flex flex-col">
               <div className=" mt-3">
                 <img
                   className="border rounded-t-lg shadow-lg"
@@ -97,13 +103,13 @@ const UserLandingPage = () => {
                 </div>
                 <div className=" p-1 border shadow bg-gray-100 flex flex-row flex-wrap">
                   <div className="w-1/3 hover:bg-gray-200 text-center text-xl text-gray-700 font-semibold">
-                    Like
+                    <FontAwesomeIcon icon={faThumbsUp} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 border-r- text-center text-xl text-gray-700 font-semibold">
-                    Share
+                    <FontAwesomeIcon icon={faShare} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 text-center text-xl text-gray-700 font-semibold">
-                    Comment
+                    <FontAwesomeIcon icon={faComment} />
                   </div>
                 </div>
                 <div className="border-4 bg-gray-300 border-white rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
@@ -126,15 +132,15 @@ const UserLandingPage = () => {
                   A Pretty Cool photo from the mountains. Image credit to
                   @danielmirlea on Unsplash.
                 </div>
-                <div className=" p-1 rounded-b-lg border shadow flex flex-row flex-wrap">
+                <div className=" p-1 border shadow bg-gray-100 flex flex-row flex-wrap">
                   <div className="w-1/3 hover:bg-gray-200 text-center text-xl text-gray-700 font-semibold">
-                    Like
+                    <FontAwesomeIcon icon={faThumbsUp} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 border-r- text-center text-xl text-gray-700 font-semibold">
-                    Share
+                    <FontAwesomeIcon icon={faShare} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 text-center text-xl text-gray-700 font-semibold">
-                    Comment
+                    <FontAwesomeIcon icon={faComment} />
                   </div>
                 </div>
                 <div className=" border-4 bg-gray-300 border-white rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
@@ -159,15 +165,15 @@ const UserLandingPage = () => {
                   A Pretty Cool photo from the mountains. Image credit to
                   @danielmirlea on Unsplash.
                 </div>
-                <div className=" p-1 rounded-b-lg border shadow flex flex-row flex-wrap">
+                <div className=" p-1 border shadow bg-gray-100 flex flex-row flex-wrap">
                   <div className="w-1/3 hover:bg-gray-200 text-center text-xl text-gray-700 font-semibold">
-                    Like
+                    <FontAwesomeIcon icon={faThumbsUp} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 border-r- text-center text-xl text-gray-700 font-semibold">
-                    Share
+                    <FontAwesomeIcon icon={faShare} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 text-center text-xl text-gray-700 font-semibold">
-                    Comment
+                    <FontAwesomeIcon icon={faComment} />
                   </div>
                 </div>
               </div>
@@ -182,15 +188,15 @@ const UserLandingPage = () => {
                   A Pretty Cool photo from the mountains. Image credit to
                   @danielmirlea on Unsplash.
                 </div>
-                <div className=" p-1 rounded-b-lg border shadow flex flex-row flex-wrap">
+                <div className=" p-1 border shadow bg-gray-100 flex flex-row flex-wrap">
                   <div className="w-1/3 hover:bg-gray-200 text-center text-xl text-gray-700 font-semibold">
-                    Like
+                    <FontAwesomeIcon icon={faThumbsUp} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 border-r- text-center text-xl text-gray-700 font-semibold">
-                    Share
+                    <FontAwesomeIcon icon={faShare} />
                   </div>
                   <div className="w-1/3 hover:bg-gray-200 border-l-4 text-center text-xl text-gray-700 font-semibold">
-                    Comment
+                    <FontAwesomeIcon icon={faComment} />
                   </div>
                 </div>
               </div>

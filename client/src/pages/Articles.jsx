@@ -32,9 +32,9 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Reality Check News</h1>
+      <h1 className='mx-10 text-3xl font-bold inline border-b-4 border-yellow-500'>Trending Articles</h1>
       <Search onSearch={handleSearch} />
-      {loading && <p>Loading articles...</p>}
+      {loading && <p className='p-2'>Loading articles...</p>}
       {!loading && articles.length === 0 && <p>No articles found</p>}
       {!loading && articles.length > 0 && (
         <div>
