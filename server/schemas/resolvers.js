@@ -87,6 +87,7 @@ const resolvers = {
         },
       ]);
     },
+    
     // Query a single comment - might not need.
     comment: async (parent, { _id }) => {
       return await Comment.findById(_id).populate("user").populate("reactions");

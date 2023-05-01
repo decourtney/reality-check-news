@@ -64,7 +64,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ARTICLE = gql`
-  query Query($articleId: ID!) {
+  query article($articleId: ID!) {
     article(articleId: $articleId) {
       _id
       comments {
@@ -91,6 +91,31 @@ export const QUERY_ARTICLE = gql`
   }
 `;
 
+export const QUERY_ARTICLES = gql`
+  query articles {
+    articles {
+      _id
+      content
+      reactions {
+        type
+      }
+      title
+      user {
+        _id
+      }
+      media {
+        _id
+      }
+      comments {
+        _id
+      }
+      categories {
+        _id
+      }
+    }
+  }
+`;
+
 export const QUERY_PROFILE = gql`
 query profile($id: ID!) {
   profile(_id: $id) {
@@ -109,8 +134,3 @@ query profile($id: ID!) {
   }
 }
 `;
-
-export const QUERY_ARTICLES = gql`
-  
-`;
-

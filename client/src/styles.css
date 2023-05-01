@@ -671,6 +671,10 @@ video {
   top: 0px;
 }
 
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
 .float-right {
   float: right;
 }
@@ -751,6 +755,10 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .block {
@@ -843,6 +851,10 @@ video {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .cursor-pointer {
