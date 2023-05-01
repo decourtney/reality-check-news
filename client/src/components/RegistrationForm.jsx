@@ -45,7 +45,10 @@ const Signup = () => {
   return (
     <>
       <div className="flex justify-center items-center p-5 shadow-md">
-        <form className="bg-gray-800 border-yellow-500 border-rounded-lg p-7 flex flex-col max-w-[600px] w-full">
+        <form
+          className="bg-gray-800 border-yellow-500 border-rounded-lg p-7 flex flex-col max-w-[600px] w-full"
+          onSubmit={handleSubmit}
+        >
           <div className="pb-4">
             <h1 className="text-4xl font-bold inline border-b-4 border-yellow-500">
               Register
@@ -57,7 +60,7 @@ const Signup = () => {
           </div>
           <input
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="firstName"
             name="firstName"
             value={userFormData.firstName}
             onChange={handleInputChange}
@@ -66,7 +69,7 @@ const Signup = () => {
           />
           <input
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="lastName"
             name="lastName"
             value={userFormData.lastName}
             onChange={handleInputChange}
@@ -84,7 +87,7 @@ const Signup = () => {
           />
           <input
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="username"
             name="username"
             value={userFormData.username}
             onChange={handleInputChange}
@@ -103,7 +106,6 @@ const Signup = () => {
           <button
             className="border-yellow-500 bg-yellow-500 font-bold border-2 px-4 py-3 my-8 mx-auto flex items-center hover:bg-gray-500 hover:border-gray-500"
             type="submit"
-            onClick={handleSubmit}
           >
             Register
           </button>

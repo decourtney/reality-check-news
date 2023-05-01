@@ -80,6 +80,7 @@ const typeDefs = gql`
     categories: [Category]
     article(articleId: ID!): Article
     articles: [Article]
+    search(searchTerm: String): [Article]
     comment(id: ID!): [Comment]
     comments: [Comment]
     user(username: String!): User
