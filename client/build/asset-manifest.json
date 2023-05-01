@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.359286ca.css",
+    "main.js": "/static/js/main.c848b883.js",
+    "static/media/realitychecklogo.svg": "/static/media/realitychecklogo.5811188cc336d24b3c571b3e54b3df5f.svg",
+    "static/media/AI_homepage_freespeech.jpg": "/static/media/AI_homepage_freespeech.9799b1063c2447f796ba.jpg",
+    "index.html": "/index.html",
+    "main.359286ca.css.map": "/static/css/main.359286ca.css.map",
+    "main.c848b883.js.map": "/static/js/main.c848b883.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.359286ca.css",
+    "static/js/main.c848b883.js"
+  ]
+}
