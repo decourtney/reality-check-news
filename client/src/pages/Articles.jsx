@@ -10,42 +10,24 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   // const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(null);
 
   const { loadingAll, dataAll } = useQuery(QUERY_ARTICLES);
-  
+
   const { loading, data } = useQuery(QUERY_SEARCH, {
     variables: { searchTerm },
   });
 
-  if(!loading)
-    console.log(data, searchTerm)
-
   useEffect(() => {
-    if (dataAll) {
-      setArticles(dataAll);
-      console.log(articles);
-    }
-  }, [dataAll]);
+    if (data) setSearchResults(data.search);
+  }, [data]);
 
-  // useEffect(() => {
-  //   const fetchArticles = async () => {
-  //     try {
-  //       const response = await getArticles();
-  //       setArticles(response.data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchArticles();
-  // }, []);
-
-  const handleSearch = async (searchTerm) => {
+  const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
   };
 
+  console.log(searchResults);
+  console.log(searchTerm);
   return (
     <>
       <div>
@@ -54,12 +36,10 @@ const Articles = () => {
         </h1>
         <Search handleSearch={handleSearch} />
         {loading && <p className="p-2">Loading articles...</p>}
-        {!loading && articles.length === 0 && <p>No articles found</p>}
-        {!loading && articles.length > 0 && (
+        {!loading && searchResults.length === 0 && <p>No articles found</p>}
+        {!loading && searchResults.length > 0 && (
           <div>
-            {articles.map((article) => (
-              <NewsCards key={article.id} articles={article} />
-            ))}
+            <NewsCards articles={searchResults} />
           </div>
         )}
         <div></div>

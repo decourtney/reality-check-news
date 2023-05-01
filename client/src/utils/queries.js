@@ -124,22 +124,6 @@ export const QUERY_ARTICLES = gql`
     articles {
       _id
       content
-      reactions {
-        type
-      }
-      title
-      user {
-        _id
-      }
-      media {
-        _id
-      }
-      comments {
-        _id
-      }
-      categories {
-        _id
-      }
     }
   }
 `;

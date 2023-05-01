@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const NewsCards = ({ articles }) => {
+  console.log('newscard', articles)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {articles && articles.map((article) => (
@@ -22,19 +23,6 @@ const NewsCards = ({ articles }) => {
       ))}
     </div>
   );
-};
-
-
-NewsCards.propTypes = {
-  articles: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      publishedAt: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };
 
 export default NewsCards;

@@ -6,6 +6,7 @@ const Search = ({handleSearch}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSearch(searchTerm);
+    setSearchTerm("");
   };
 
   return (
