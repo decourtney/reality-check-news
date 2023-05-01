@@ -26,8 +26,6 @@ const Articles = () => {
     setSearchTerm(searchTerm);
   };
 
-  console.log(searchResults);
-  console.log(searchTerm);
   return (
     <>
       <div>

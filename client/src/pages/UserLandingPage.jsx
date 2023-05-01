@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Auth from "../utils/auth";
 import {
   faThumbsUp,
   faShare,
@@ -60,7 +61,8 @@ const UserLandingPage = () => {
             </a>
             <a
               className="hover:bg-gray-300 border-t-2 p-3 w-full text-xl text-left text-gray-600 font-semibold"
-              href=""
+              href="/"
+              onClick={() => Auth.logout()}
             >
               <i className="fa fa-arrow-left text-gray-600 text-2xl pr-1 pt-1 float-right"></i>
               Log out
