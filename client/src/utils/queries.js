@@ -63,6 +63,34 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_SEARCH = gql`
+query search($searchTerm: String) {
+  search(searchTerm: $searchTerm) {
+    _id
+      comments {
+        _id
+        content
+        user {
+          username
+        }
+      }
+      content
+      media {
+        _id
+        url
+      }
+      reactions {
+        id
+        type
+      }
+      title
+      user {
+        username
+      }
+    }
+  }
+`;
+
 export const QUERY_ARTICLE = gql`
   query article($articleId: ID!) {
     article(articleId: $articleId) {

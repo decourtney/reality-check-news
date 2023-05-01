@@ -22,7 +22,7 @@ const LoginRegister = () => {
           </div>
         ) : (
           <div className="shadow-md rounded px-8 pt-6 pb-8">
-            <RegistrationForm handleLoginClick={handleLoginClick} />
+            <RegistrationForm />
           </div>
         )}
       </div>

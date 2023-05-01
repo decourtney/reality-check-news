@@ -4,17 +4,7 @@ import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [showLogin, setShowLogin] = useState(true);
-
-  const handleLoginClick = () => {
-    setShowLogin(true);
-  };
-
-  const handleRegisterClick = () => {
-    setShowLogin(false);
-  };
-
+const Login = ({ handleRegisterClick }) => {
   const [userFormData, setUserFormData] = useState({
     email: "",
     password: "",
@@ -82,11 +72,7 @@ const Login = () => {
             Don't have an account?{" "}
             <Link
               to="/register"
-              className={`${
-                showLogin
-                  ? "text-blue-500 hover:bg-gray-700"
-                  : "bg-yellow-500 hover:bg-yellow-500 text-white"
-              } font-bold ml-2`}
+              className="text-blue-500 hover:bg-gray-700 font-bold ml-2"
               onClick={handleRegisterClick}
             >
               Sign Up

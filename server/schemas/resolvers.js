@@ -1,5 +1,12 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Profile, Article, Category, Comment, Reaction } = require("../models");
+const {
+  User,
+  Profile,
+  Article,
+  Category,
+  Comment,
+  Reaction,
+} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -87,7 +94,10 @@ const resolvers = {
         },
       ]);
     },
-    
+    search: async (parent, { searchTerm }, context) => {
+      const searchRegex = new RegExp(searchTerm, "i");
+      return await Article.find({ title: { $regex: searchRegex } });
+    },
     // Query a single comment - might not need.
     comment: async (parent, { _id }) => {
       return await Comment.findById(_id).populate("user").populate("reactions");
@@ -102,31 +112,31 @@ const resolvers = {
       }
     },
     article: async (parent, { _id }) => {
-      return await Article.findById(_id).populate('category');
+      return await Article.findById(_id).populate("category");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'articles',
-          populate: { path: 'category' }
+          path: "articles",
+          populate: { path: "category" },
         });
 
         return user;
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
     profile: async (parent, { _id }) => {
       return await Profile.findById(_id);
-    }
+    },
   },
   Mutation: {
     addReaction: async (parent, { type, userId, ...rest }, context) => {
-      // if (context.user) {
-      const reaction = new Reaction({type, user: userId, ...rest})
-      await reaction.save();
-      return reaction;
-      // }
+      if (context.user) {
+        const reaction = new Reaction({ type, user: userId, ...rest });
+        await reaction.save();
+        return reaction;
+      }
     },
     addComment: async (parent, { articleId, content, userId }, context) => {
       // if (context.user) {
@@ -150,10 +160,10 @@ const resolvers = {
     },
 
     addUser: async (parent, args, context) => {
-      const profile = await Profile.create({name: args.username});
+      const profile = await Profile.create({ name: args.username });
       const user = await User.create({
         ...args,
-        profile: profile._id
+        profile: profile._id,
       });
       const token = signToken(user);
       return { token };
@@ -161,15 +171,19 @@ const resolvers = {
     // addArticle works
     addArticle: async (_, { userId, content, title }) => {
       // create new article object
-      const article = await Article.create({ content: content, user: userId, title: title });
-    
+      const article = await Article.create({
+        content: content,
+        user: userId,
+        title: title,
+      });
+
       // add article to user's list of articles
       await User.findByIdAndUpdate(userId, { $push: { articles: article } });
       console.log(article);
       // return the newly created article object
       return article;
     },
-    
+
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -177,7 +191,7 @@ const resolvers = {
         });
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
     // updateProfile works
     updateProfile: async (parent, { userId, name, bio }) => {
