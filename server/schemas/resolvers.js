@@ -104,16 +104,18 @@ const resolvers = {
     },
     // Query all comments - might not need.
     comments: async (parent) => {},
-    user: async (parent, { username }) => {
-      try {
-        return await User.findOne({ username });
-      } catch (err) {
-        throw new Error("Could not find that user.");
-      }
-    },
+
+    // user: async (parent, { username }) => {
+    //   try {
+    //     return await User.findOne({ username });
+    //   } catch (err) {
+    //     throw new Error("Could not find that user.");
+    //   }
+    // },
     article: async (parent, { _id }) => {
       return await Article.findById(_id).populate("category");
     },
+
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -202,13 +204,13 @@ const resolvers = {
       );
       return updatedProfile;
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }, context) => {
       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("Incorrect credentials");
       }
-
+  
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {

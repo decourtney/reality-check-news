@@ -10,7 +10,7 @@ const Login = ({ handleRegisterClick }) => {
     password: "",
   });
 
-  const [login, { error, data }] = useMutation(LOGIN);
+  const [login, { error }] = useMutation(LOGIN);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,7 +21,7 @@ const Login = ({ handleRegisterClick }) => {
     event.preventDefault();
 
     try {
-      const { data } = await login({ variables: { ...userFormData } });
+      const {data} = await login({ variables: { ...userFormData } });
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
